@@ -2,6 +2,7 @@
 
 public class Aeroporto : BaseDomainEntity
 {
+
     public Iata Iata { get; set; } = new Iata();
     public long IataID { get; set; }
     public string CodigoIATA { get; set; } = string.Empty;
