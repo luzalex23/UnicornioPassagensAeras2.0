@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain;
+namespace Domain.Entities;
 
 public class BaseDomainEntity
 {
-    public long Id { get; set; }  
+    public long Id { get; set; }
     public string Name { get; set; } = string.Empty;
     public DateTime CreatedDate { get; set; }
 }
