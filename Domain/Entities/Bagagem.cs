@@ -11,4 +11,5 @@ public class Bagagem
     public long BagagemID { get; set; }
     public Passagem Passagem { get; set; } = new Passagem();
     public long PassagemID { get; set; }
+
 }

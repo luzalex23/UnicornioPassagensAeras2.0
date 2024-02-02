@@ -9,6 +9,7 @@ namespace Domain.Entities;
 public class Compra
 {
     public long CompraID { get; set; }
+    public DateTime CompraDate { get; set; }
     public long PassageiroID { get; set; }
     public long VooID { get; set; }
     public long ClasseID { get; set; }

@@ -25,4 +25,9 @@ public class IataService : IIataService
     {
         await _repository.Add(iata);
     }
+
+    public async Task<Iata> GetByNome(string nome)
+    {
+        return await _repository.GetByName(nome);
+    }
 }

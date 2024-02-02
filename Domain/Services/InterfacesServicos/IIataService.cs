@@ -11,4 +11,6 @@ public interface IIataService
 {
     Task CriarIata(Iata iata);
     Task AtualizarIata(Iata iata);
+    Task<Iata> GetByNome(string nome);
+
 }

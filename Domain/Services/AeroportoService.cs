@@ -26,12 +26,22 @@ public class AeroportoService : IAeroportoService
 
     public async Task CriarAeroporto(Aeroporto aeroporto)
     {
-        var existingAeroporto = _aeroportoRepository.GetByCodigoIATA(aeroporto.CodigoIATA);
+        var existingAeroporto = _aeroportoRepository.GetAeroportoByCodigoIATA(aeroporto.CodigoIATA);
         if (existingAeroporto != null)
         {
             throw new InvalidOperationException("Aeroporto com o mesmo CodigoIATA já existe.");
         }
 
         await _aeroportoRepository.Add(aeroporto);
+    }
+
+    public async Task<Aeroporto> GetAeroportoByCodigoIATA(string codigoIATA)
+    {
+        return await _aeroportoRepository.GetAeroportoByCodigoIATA(codigoIATA);
+    }
+
+    public async Task<List<Aeroporto>> ListarAeroportoPorNome(string nome)
+    {
+        return await _aeroportoRepository.ListarAeroportoPorNome(nome);
     }
 }

@@ -16,5 +16,5 @@ public class Voo
     public Aeroporto AeroportoOrigem { get; set; } = new Aeroporto();
     public Aeroporto AeroportoDestino { get; set; } = new Aeroporto();
     public virtual List<Classe> Classes { get; set; } = new List<Classe>();
-
+    public decimal? PrecoTotal { get; set; }
 }

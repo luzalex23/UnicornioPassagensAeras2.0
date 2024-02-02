@@ -11,6 +11,7 @@ public interface IRepository<T> where T : class
     Task Add(T objeto);
     Task Update(T objeto);
     Task Delete(T objeto);
-    Task<T> GetEntityById(int id);
+    Task<T> GetEntityById(long id);
     Task<List<T>> List();
+    Task<T> GetByName(string name);
 }

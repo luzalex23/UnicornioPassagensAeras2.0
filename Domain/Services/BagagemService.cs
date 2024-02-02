@@ -4,7 +4,7 @@ using Domain.Services.InterfacesServicos;
 
 namespace Domain.Services;
 
-public class BagagemService : IBagemService
+public class BagagemService : IBagagemService
 {
     private readonly IBagagemRepository _bagagemRepository;
     public BagagemService(IBagagemRepository bagagemRepository)
