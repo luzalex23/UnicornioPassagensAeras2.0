@@ -25,4 +25,9 @@ public class VooService : IVooService
     {
         await _vooRepository.Add(voo);
     }
+
+    public Task<List<Voo>> ListarVoosDisponiveis(string origem, string destino, DateTime dataPartida, decimal? valorMaximo)
+    {
+        return _vooRepository.GetVoosDisponiveis(origem, destino, dataPartida);
+    }
 }

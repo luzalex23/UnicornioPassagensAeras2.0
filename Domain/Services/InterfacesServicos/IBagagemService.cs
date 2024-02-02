@@ -2,7 +2,7 @@
 
 namespace Domain.Services.InterfacesServicos;
 
-public interface IBagemService
+public interface IBagagemService
 {
     Task CriarBagem(Bagagem bagagem);
     Task AtualizarBagagem(Bagagem bagagem);

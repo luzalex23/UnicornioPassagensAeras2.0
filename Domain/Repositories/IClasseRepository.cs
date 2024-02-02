@@ -9,6 +9,6 @@ namespace Domain.Repositories
 {
     public interface IClasseRepository : IRepository<Classe>
     {
-        Task<List<Classe>> GetClassesByVoo(int vooId);
+        Task<List<Classe>> GetClassesByVoo(long vooId);
     }
 }

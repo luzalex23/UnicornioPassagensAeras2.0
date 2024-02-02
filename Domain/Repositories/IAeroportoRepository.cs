@@ -11,5 +11,7 @@ public interface IAeroportoRepository : IRepository<Aeroporto>
 {
     Task<Aeroporto> GetAeroportoByCodigoIATA(string codigoIATA);
     Task<List<Aeroporto>> GetAeroportosByCidade(string nomeCidade);
-    Task GetByCodigoIATA(string codigoIATA);
+    Task<List<Aeroporto>> ListarAeroportoPorNome(string nome);
+
+    //Task GetByCodigoIATA(string codigoIATA);
 }
