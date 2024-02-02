@@ -30,4 +30,25 @@ public class VooService : IVooService
     {
         return _vooRepository.GetVoosDisponiveis(origem, destino, dataPartida);
     }
+    public bool ValidarAeroportosOrigemDestino(Aeroporto origem, Aeroporto destino)
+    {
+        if (origem.CodigoIATA == destino.CodigoIATA)
+        {
+            return false;
+
+        }
+        if (origem.Cidade.Name == destino.Cidade.Name)
+        {
+            return false;
+        }
+        // Se chegou até aqui, os aeroportos são válidos
+        return true;
+
+    }
+    public bool VerificarDisponibilidadeAssentos(Voo voo, Classe classe, int quantidadePassagens)
+    {
+        var classeNoVoo = voo.Classes.FirstOrDefault(c => c.TipoClasse == classe.TipoClasse);
+
+        return classeNoVoo != null && classeNoVoo.QuantidadeAssentos >= quantidadePassagens;
+    }
 }

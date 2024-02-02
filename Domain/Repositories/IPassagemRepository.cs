@@ -11,4 +11,5 @@ public interface IPassagemRepository : IRepository<Passagem>
 {
     Task<List<Passagem>> GetPassagensByVoo(int vooId);
     Task<List<Passagem>> GetPassagensByCompra(int compraId);
+    Task<List<Passagem>> ObterPassagensPorCPF(Func<object, bool> value);
 }

@@ -1,8 +1,7 @@
-﻿using Domain.Services.InterfacesServicos;
-using Infra.Data;
+﻿using Infra.Services.Interfaces;
 using Microsoft.EntityFrameworkCore.Internal;
 
-namespace Domain.Services;
+namespace Infra.Data;
 
 public class UnitOfWork : IUnitOfWork
 {

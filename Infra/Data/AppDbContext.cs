@@ -21,6 +21,8 @@ public class AppDbContext : DbContext
     public DbSet<Compra> Compras { get; set; }
     public DbSet<Iata> Iatas { get; set; }
     public DbSet<Reserva> Reservas { get; set; }
+    public DbSet<Gestor> Gestores { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

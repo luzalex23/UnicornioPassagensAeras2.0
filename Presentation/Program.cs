@@ -6,10 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-// No Startup.cs ou classe equivalente
 
 // Adicione os repositórios
-//builder.Services.AddScoped<IIataRepository, IataRepository>();
+builder.Services.AddScoped<IIataRepository, IataRepository>();
 builder.Services.AddScoped<IAeroportoRepository, AeroportoRepository>();
 builder.Services.AddScoped<ICidadeRepository, CidadeRepository>();
 builder.Services.AddScoped<IVooRepository, VooRepository>();
