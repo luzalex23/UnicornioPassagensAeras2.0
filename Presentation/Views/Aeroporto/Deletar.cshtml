@@ -1,0 +1,19 @@
+﻿@model Presentation.ViewModel.AeroportoViewModel
+@{
+    ViewData["Title"] = "Excluir Aeroporto";
+}
+
+<h1>Excluir Aeroporto</h1>
+
+<div>
+    <h4>Código IATA: @Model.CodigoIATA</h4>
+    <h4>Nome: @Model.Nome</h4>
+    <h4>Cidade: @Model.NomeCidade</h4>
+</div>
+
+<form asp-action="Excluir" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit">Confirmar Exclusão</button>
+</form>
+
+<a asp-action="Index">Voltar para a Lista</a>

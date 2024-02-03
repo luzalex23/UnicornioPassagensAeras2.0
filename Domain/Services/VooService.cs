@@ -26,6 +26,21 @@ public class VooService : IVooService
         await _vooRepository.Add(voo);
     }
 
+    public Task<Voo> GetById(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<Voo> GetByIdAsync(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<List<Voo>> List()
+    {
+        throw new NotImplementedException();
+    }
+
     public Task<List<Voo>> ListarVoosDisponiveis(string origem, string destino, DateTime dataPartida, decimal? valorMaximo)
     {
         return _vooRepository.GetVoosDisponiveis(origem, destino, dataPartida);

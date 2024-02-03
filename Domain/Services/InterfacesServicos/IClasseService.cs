@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Services.InterfacesServicos;
 
-public interface IClasseService
+public interface IClasseService : IServiceGeneric<Classe>
 {
     Task CriarClasse(Classe classe);
     Task AtualizarClasse(Classe classe);

@@ -1,0 +1,32 @@
+﻿@model Presentation.ViewModel.VooViewModel
+@{
+    ViewData["Title"] = "Editar Voo";
+}
+
+<h1>Editar Voo</h1>
+
+<form asp-action="Editar" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div>
+        <label asp-for="AeroportoOrigemID">Aeroporto de Origem:</label>
+        <input asp-for="AeroportoOrigemID" />
+        <span asp-validation-for="AeroportoOrigemID"></span>
+    </div>
+
+    <div>
+        <label asp-for="AeroportoDestinoID">Aeroporto de Destino:</label>
+        <input asp-for="AeroportoDestinoID" />
+        <span asp-validation-for="AeroportoDestinoID"></span>
+    </div>
+
+    <div>
+        <label asp-for="DataHoraPartida">Data e Hora de Partida:</label>
+        <input asp-for="DataHoraPartida" type="datetime-local" />
+        <span asp-validation-for="DataHoraPartida"></span>
+    </div>
+
+    <button type="submit">Salvar</button>
+</form>
+
+<a asp-action="Index">Voltar para a Lista</a>

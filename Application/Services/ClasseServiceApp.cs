@@ -43,7 +43,7 @@ public class ClasseServiceApp : IClasseAppService
 
     public async Task<List<Classe>> ListClasse(Classe classe)
     {
-       return await _classeRepository.GetClassesByVoo(classe.ClasseID);
+       return await _classeRepository.GetClassesByVoo(classe.Id);
     }
 
     public async Task Update(Classe objeto)

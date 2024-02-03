@@ -34,4 +34,19 @@ public class ClasseService : IClasseService
 
         return valorTotal;
     }
+
+    public Task<Classe> GetById(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<Classe> GetByIdAsync(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<List<Classe>> List()
+    {
+        throw new NotImplementedException();
+    }
 }

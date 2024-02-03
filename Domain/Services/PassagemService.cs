@@ -21,12 +21,12 @@ public class PassagemService : IPassagemService
 
     public async Task CriarPassagem(Passagem passagem)
     {
-        await _passagemRepository.Update(passagem);
+        await _passagemRepository.Add(passagem);
     }
 
     public async Task AtualizarPassagem(Passagem passagem)
     {
-        await _passagemRepository.Add(passagem);
+        await _passagemRepository.Update(passagem);
     }
     public async Task<List<Passagem>> ObterPassagensPorCPF(string cpf)
     {
@@ -119,5 +119,25 @@ public class PassagemService : IPassagemService
         {
             throw new Exception($"Erro ao emitir o voucher: {ex.Message}");
         }
+    }
+
+    public Task CriarPassagem(Voo voos, Passagem passagem)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<Passagem> GetById(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<Passagem> GetByIdAsync(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<List<Passagem>> List()
+    {
+        throw new NotImplementedException();
     }
 }

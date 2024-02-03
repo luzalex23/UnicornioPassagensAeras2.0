@@ -20,7 +20,7 @@ public class AutenticacaoGestorService : IAutenticacaoGestorService
     {
         if (await _gestorRepository.CheckCredentials(username, password))
         {
-            var token = _tokenService.GenerateToken(username);
+            var token = _tokenService.GenerateToken(username, password);
             return token;
         }
 

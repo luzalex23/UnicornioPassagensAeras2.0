@@ -3,7 +3,7 @@
 
 namespace Domain.Services.InterfacesServicos;
 
-public interface IPassagemService
+public interface IPassagemService : IServiceGeneric<Passagem>
 {
     Task CriarPassagem(Passagem passagem);
     Task AtualizarPassagem(Passagem passagem);
