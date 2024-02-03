@@ -14,7 +14,7 @@ public class ClasseConfiguration : IEntityTypeConfiguration<Classe>
 {
     public void Configure(EntityTypeBuilder<Classe> builder)
 {
-    builder.HasKey(c => c.ClasseID);
+    builder.HasKey(c => c.Id);
     builder.Property(c => c.TipoClasse).IsRequired();
     builder.Property(c => c.QuantidadeAssentos).IsRequired();
     builder.Property(c => c.ValorAssento).IsRequired();

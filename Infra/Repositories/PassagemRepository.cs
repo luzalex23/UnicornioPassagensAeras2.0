@@ -30,4 +30,8 @@ public class PassagemRepository : Repository<Passagem>, IPassagemRepository
             .ToListAsync();
     }
 
+    public Task<List<Passagem>> ObterPassagensPorCPF(Func<object, bool> value)
+    {
+        throw new NotImplementedException();
+    }
 }

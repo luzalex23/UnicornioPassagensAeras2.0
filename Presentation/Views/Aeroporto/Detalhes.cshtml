@@ -1,0 +1,14 @@
+﻿@model Presentation.ViewModel.AeroportoViewModel
+@{
+    ViewData["Title"] = "Detalhes do Aeroporto";
+}
+
+<h1>Detalhes do Aeroporto</h1>
+
+<div>
+    <h4>Código IATA: @Model.CodigoIATA</h4>
+    <h4>Nome: @Model.Nome</h4>
+    <h4>Cidade: @Model.NomeCidade</h4>
+</div>
+
+<a asp-action="Index">Voltar para a Lista</a>

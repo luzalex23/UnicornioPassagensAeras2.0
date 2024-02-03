@@ -21,9 +21,17 @@ public class VooRepository : Repository<Voo>, IVooRepository
         throw new NotImplementedException();
     }
 
-    public Task<List<Voo>> GetVoosDisponiveis(string origem, string destino, DateTime data)
+    public async Task<List<Voo>> GetVoosDisponiveis(string origem, string destino, DateTime data)
     {
-        throw new NotImplementedException();
+        data = data.ToUniversalTime();
+
+        var voosDisponiveis = await _context.Voos
+            .Where(v => v.AeroportoOrigem.Name == origem &&
+                        v.AeroportoDestino.Name == destino &&
+                        v.DataHoraPartida > data)
+            .ToListAsync();
+
+        return voosDisponiveis;
     }
 
     public Task<List<Voo>> ListarVoosDisponiveis(string origem, string destino, DateTime dataPartida, decimal? valorMaximo)

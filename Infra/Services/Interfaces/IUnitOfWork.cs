@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Services.InterfacesServicos;
+namespace Infra.Services.Interfaces;
 
 public interface IUnitOfWork : IDisposable
 {

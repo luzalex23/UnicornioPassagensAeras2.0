@@ -9,7 +9,7 @@ namespace Domain.Entities;
 
 public class Classe
 {
-    public int ClasseID { get; set; }
+    public int Id { get; set; }
     public TipoClasse TipoClasse { get; set; }
     public int QuantidadeAssentos { get; set; }
     public decimal ValorAssento { get; set; }

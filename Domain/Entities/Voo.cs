@@ -8,7 +8,7 @@ namespace Domain.Entities;
 
 public class Voo
 {
-    public int VooID { get; set; }
+    public int Id { get; set; }
     public long AeroportoOrigemID { get; set; }
     public long AeroportoDestinoID { get; set; }
     public DateTime DataHoraPartida { get; set; }
@@ -17,4 +17,9 @@ public class Voo
     public Aeroporto AeroportoDestino { get; set; } = new Aeroporto();
     public virtual List<Classe> Classes { get; set; } = new List<Classe>();
     public decimal? PrecoTotal { get; set; }
+
+    public static implicit operator Voo(Task<List<Voo>> v)
+    {
+        throw new NotImplementedException();
+    }
 }

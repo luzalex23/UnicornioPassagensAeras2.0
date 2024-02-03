@@ -25,4 +25,28 @@ public class ClasseService : IClasseService
     {
         await _classeRepository.Add(classe);
     }
+    public decimal CalcularValorTotal(Classe classe)
+    {
+
+        decimal taxaBasePorAssento = 100.0m;
+
+        decimal valorTotal = taxaBasePorAssento * classe.ValorAssento;
+
+        return valorTotal;
+    }
+
+    public Task<Classe> GetById(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<Classe> GetByIdAsync(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<List<Classe>> List()
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Presentation.ViewModel.AeroportoViewModel>
+@{
+    ViewData["Title"] = "Listar";
+}
+<h1>Lista de Aeroportos</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Código IATA</th>
+            <th>Nome</th>
+            <th>Cidade</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var aeroporto in Model)
+        {
+            <tr>
+                <td>@aeroporto.CodigoIATA</td>
+                <td>@aeroporto.Nome</td>
+                <td>@aeroporto.NomeCidade</td>
+                <td>
+                    <a asp-action="Detalhes" asp-route-id="@aeroporto.Id">Detalhes</a> |
+                    <a asp-action="Editar" asp-route-id="@aeroporto.Id">Editar</a> |
+                    <a asp-action="Excluir" asp-route-id="@aeroporto.Id">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Criar">Criar Novo Aeroporto</a>

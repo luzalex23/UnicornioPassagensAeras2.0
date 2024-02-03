@@ -2,23 +2,14 @@
 using Domain.Repositories;
 using Infra.Data;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infra.Repositories;
 
-public class IataRepository : IRepository<Iata>
+public class IataRepository : Repository<Iata>, IIataRepository
 {
-    private readonly AppDbContext _context;
-
-    public IataRepository(AppDbContext context)
+    public IataRepository(AppDbContext context) : base(context)
     {
-        _context = context;
     }
-
     public async Task Add(Iata objeto)
     {
         _context.Iatas.Add(objeto);
@@ -41,6 +32,11 @@ public class IataRepository : IRepository<Iata>
     {
         return await _context.Iatas.FindAsync(id) ?? throw new InvalidOperationException("Iata não encontrada");
 
+    }
+
+    public Task<List<Iata>> GetIataIdByAeroporto(long iataId)
+    {
+        throw new NotImplementedException();
     }
 
     public Task<List<Iata>> List()

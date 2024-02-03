@@ -10,8 +10,8 @@ public class Reserva
 {
     public long ReservaID { get; set; }
     public long PassageiroId { get; set; }
-    public long VooId { get; set; }
-    public long ClasseId { get; set; }
+    public int VooId { get; set; }
+    public int ClasseId { get; set; }
     public Voo Voo { get; set; }
     public Classe Classe { get; set; }
     public Passageiro Passageiro { get; set; }

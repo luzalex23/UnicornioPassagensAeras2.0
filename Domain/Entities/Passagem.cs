@@ -8,6 +8,18 @@ namespace Domain.Entities;
 
 public class Passagem 
 {
+    public Passagem()
+    {
+    }
+
+    public Passagem(decimal precoTotal, Classe classe, Voo voo, Passageiro passageiro)
+    {
+        PrecoTotal = precoTotal;
+        Classe = classe;
+        Voo = voo;
+        Passageiro = passageiro;
+    }
+
     public long PassagemID { get; set; }
     public long VooID { get; set; }
     public long ClasseID { get; set; }

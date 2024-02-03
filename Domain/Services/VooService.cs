@@ -26,8 +26,44 @@ public class VooService : IVooService
         await _vooRepository.Add(voo);
     }
 
+    public Task<Voo> GetById(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<Voo> GetByIdAsync(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<List<Voo>> List()
+    {
+        throw new NotImplementedException();
+    }
+
     public Task<List<Voo>> ListarVoosDisponiveis(string origem, string destino, DateTime dataPartida, decimal? valorMaximo)
     {
         return _vooRepository.GetVoosDisponiveis(origem, destino, dataPartida);
+    }
+    public bool ValidarAeroportosOrigemDestino(Aeroporto origem, Aeroporto destino)
+    {
+        if (origem.CodigoIATA == destino.CodigoIATA)
+        {
+            return false;
+
+        }
+        if (origem.Cidade.Name == destino.Cidade.Name)
+        {
+            return false;
+        }
+        // Se chegou até aqui, os aeroportos são válidos
+        return true;
+
+    }
+    public bool VerificarDisponibilidadeAssentos(Voo voo, Classe classe, int quantidadePassagens)
+    {
+        var classeNoVoo = voo.Classes.FirstOrDefault(c => c.TipoClasse == classe.TipoClasse);
+
+        return classeNoVoo != null && classeNoVoo.QuantidadeAssentos >= quantidadePassagens;
     }
 }

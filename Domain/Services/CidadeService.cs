@@ -29,4 +29,19 @@ public class CidadeService : ICidadeService
          await _cidadeRepository.Add(cidade);
 
     }
+
+    public Task<Cidade> GetById(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<Cidade> GetByIdAsync(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<List<Cidade>> List()
+    {
+        throw new NotImplementedException();
+    }
 }
