@@ -15,12 +15,15 @@ public class AeroportoController : Controller
         _aeroportoAppService = aeroportoAppService;
         _mapper = mapper;
     }
-
-    public async Task<IActionResult> Index()
+    public ActionResult Index()
+    {
+        return View();
+    }
+   /* public async Task<IActionResult> Index()
     {
         var aeroportos = await _aeroportoAppService.List();
         return View(aeroportos);
-    }
+    }*/
 
     public IActionResult Criar()
     {
@@ -29,7 +32,7 @@ public class AeroportoController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Criar([Bind("Nome, IataCodigo, NomeCidade")] AeroportoViewModel aeroportoViewModel)
+    public async Task<IActionResult> Criar([Bind("CodigoIATA, Nome, NomeCidade")] AeroportoViewModel aeroportoViewModel)
     {
         if (ModelState.IsValid)
         {

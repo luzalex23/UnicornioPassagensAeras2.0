@@ -17,9 +17,10 @@
         @foreach (var aeroporto in Model)
         {
             <tr>
-                <td>@aeroporto.CodigoIATA</td>
-                <td>@aeroporto.Nome</td>
-                <td>@aeroporto.NomeCidade</td>
+                <td>@aeroporto?.CodigoIATA</td>
+                <td>@aeroporto?.Nome</td>
+                <td>@aeroporto?.NomeCidade</td>
+
                 <td>
                     <a asp-action="Detalhes" asp-route-id="@aeroporto.Id">Detalhes</a> |
                     <a asp-action="Editar" asp-route-id="@aeroporto.Id">Editar</a> |

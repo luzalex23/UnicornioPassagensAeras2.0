@@ -20,9 +20,9 @@ public class VooController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var voos = await _vooAppService.List();
-        var voosViewModel = _mapper.Map<List<VooViewModel>>(voos);
-        return View(voosViewModel);
+      /*  var voos = await _vooAppService.List();
+        var voosViewModel = _mapper.Map<List<VooViewModel>>(voos);*/
+        return View();
     }
 
     [HttpGet]

@@ -1,3 +1,5 @@
+using Application.Services.Interfaces;
+using Application.Services;
 using Domain.Entities;
 using Domain.Repositories;
 using Domain.Services;
@@ -38,6 +40,10 @@ builder.Services.AddScoped<IPassageiroService, PassageiroService>();
 builder.Services.AddScoped<IPassagemService, PassagemService>();
 builder.Services.AddScoped<ICompraService, CompraService>();
 builder.Services.AddScoped<IBagagemService, BagagemService>();
+
+//Servicos App
+// ...
+builder.Services.AddScoped<IAeroportoAppService, AeroportoAppService>();
 
 //AutoMapper
 builder.Services.AddAutoMapper(typeof(AeroportoProfile));
