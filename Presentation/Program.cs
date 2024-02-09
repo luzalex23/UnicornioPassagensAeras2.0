@@ -20,13 +20,13 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddControllersWithViews();
 
 // Adicione os repositórios
-builder.Services.AddScoped<IRepository<Iata>, IataRepository>();
+builder.Services.AddScoped<IIataRepository, IataRepository>();
 builder.Services.AddScoped<IAeroportoRepository, AeroportoRepository>();
 builder.Services.AddScoped<ICidadeRepository, CidadeRepository>();
-builder.Services.AddScoped<IVooRepository, VooRepository>();
-builder.Services.AddScoped<IClasseRepository, ClasseRepository>();
+//builder.Services.AddScoped<IVooRepository, VooRepository>();
+//builder.Services.AddScoped<IClasseRepository, ClasseRepository>();
 builder.Services.AddScoped<IPassageiroRepository, PassageiroRepository>();
-builder.Services.AddScoped<IPassagemRepository, PassagemRepository>();
+//builder.Services.AddScoped<IPassagemRepository, PassagemRepository>();
 builder.Services.AddScoped<ICompraRepository, CompraRepository>();
 builder.Services.AddScoped<IBagagemRepository, BagagemRepository>();
 
@@ -34,25 +34,30 @@ builder.Services.AddScoped<IBagagemRepository, BagagemRepository>();
 builder.Services.AddScoped<IIataService, IataService>();
 builder.Services.AddScoped<IAeroportoService, AeroportoService>();
 builder.Services.AddScoped<ICidadeService, CidadeService>();
-builder.Services.AddScoped<IVooService, VooService>();
-builder.Services.AddScoped<IClasseService, ClasseService>();
+//builder.Services.AddScoped<IVooService, VooService>();
+//builder.Services.AddScoped<IClasseService, ClasseService>();
 builder.Services.AddScoped<IPassageiroService, PassageiroService>();
-builder.Services.AddScoped<IPassagemService, PassagemService>();
+//builder.Services.AddScoped<IPassagemService, PassagemService>();
 builder.Services.AddScoped<ICompraService, CompraService>();
 builder.Services.AddScoped<IBagagemService, BagagemService>();
 
 //Servicos App
 // ...
 builder.Services.AddScoped<IAeroportoAppService, AeroportoAppService>();
+builder.Services.AddScoped<ICidadeAppService, CidadeAppService>();
+builder.Services.AddScoped<IIataAppService, IataAppService>();
+
 
 //AutoMapper
-builder.Services.AddAutoMapper(typeof(AeroportoProfile));
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
+    app.UseStatusCodePagesWithRedirects("/Home/Error/{0}");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }

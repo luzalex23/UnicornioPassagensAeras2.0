@@ -1,6 +1,7 @@
-﻿using Application.Services.Interfaces;
+﻿using Application.DTOs;
+using Application.Services.Interfaces;
+using AutoMapper;
 using Domain.Entities;
-using Domain.Repositories;
 using Domain.Services.InterfacesServicos;
 
 namespace Application.Services;
@@ -8,48 +9,53 @@ namespace Application.Services;
 public class AeroportoAppService : IAeroportoAppService
 {
     private readonly IAeroportoService _aeroportoService;
-    private readonly IAeroportoRepository _aeroportoRepository;
+    private readonly IMapper _mapper;
 
-    public AeroportoAppService(IAeroportoRepository aeroportoRepository, IAeroportoService aeroportoService)
+    public AeroportoAppService(IAeroportoService aeroportoService, IMapper mapper)
     {
         _aeroportoService = aeroportoService;
-        _aeroportoRepository = aeroportoRepository;
+        _mapper = mapper;
     }
 
-    public async Task Add(Aeroporto objeto)
+    public async Task Add(AeroportoDTO aeroportoDTO)
     {
-        await _aeroportoRepository.Add(objeto); 
+        var aeroporto = _mapper.Map<Aeroporto>(aeroportoDTO);
+        await _aeroportoService.Add(aeroporto);
     }
 
-    public async Task CriarAeroporto(Aeroporto aeroporto)
+    public async Task Update(AeroportoDTO aeroportoDTO)
     {
-        // Verifica se o código IATA já está associado a algum aeroporto
-        var aeroportoExistente = await _aeroportoRepository.GetAeroportoByCodigoIATA(aeroporto.CodigoIATA);
-
-        if (aeroportoExistente != null)
-        {
-            throw new InvalidOperationException("Código IATA já está associado a outro aeroporto, por favor use outro IATA.");
-        }
-         await _aeroportoRepository.Add(aeroporto);
+        var aeroporto = _mapper.Map<Aeroporto>(aeroportoDTO);
+        await _aeroportoService.Update(aeroporto);
     }
 
-
-    public async Task Delete(Aeroporto objeto)
+    public async Task Delete(AeroportoDTO aeroportoDTO)
     {
-        await _aeroportoRepository.Delete(objeto);
+        var aeroporto = _mapper.Map<Aeroporto>(aeroportoDTO);
+        await _aeroportoService.Delete(aeroporto);
     }
 
-    public async Task<Aeroporto> GetEntityById(int Id)
+    public async Task<AeroportoDTO> GetEntityById(long id)
     {
-        return await _aeroportoRepository.GetEntityById(Id);
+        var aeroporto = await _aeroportoService.GetById(id);
+        return _mapper.Map<AeroportoDTO>(aeroporto);
     }
 
-    public async Task<List<Aeroporto>> List()
+    public async Task<List<AeroportoDTO>> List()
     {
-        return await _aeroportoRepository.List();
+        var aeroportos = await _aeroportoService.List();
+        return _mapper.Map<List<AeroportoDTO>>(aeroportos);
     }
-    public async Task Update(Aeroporto objeto)
+
+    public async Task<List<AeroportoDTO>> ListarAeroportosPorNome(string nome)
     {
-        await _aeroportoRepository.Update(objeto);
+        var aeroportos = await _aeroportoService.ListarAeroportoPorNome(nome);
+        return _mapper.Map<List<AeroportoDTO>>(aeroportos);
+    }
+
+    public async Task<AeroportoDTO> GetAeroportoById(long id)
+    {
+        var aeroporto = await _aeroportoService.GetById(id);
+        return _mapper.Map<AeroportoDTO>(aeroporto);
     }
 }

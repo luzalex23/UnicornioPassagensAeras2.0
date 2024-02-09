@@ -7,10 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Services.InterfacesServicos;
 
-public interface IIataService
+public interface IIataService : IServiceGeneric<Iata>
 {
-    Task CriarIata(Iata iata);
-    Task AtualizarIata(Iata iata);
     Task<Iata> GetByNome(string nome);
-
 }

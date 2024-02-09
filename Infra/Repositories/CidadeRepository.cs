@@ -6,15 +6,50 @@ using System.Threading.Tasks;
 
 namespace Infra.Repositories;
 
-public class CidadeRepository : Repository<Cidade>, ICidadeRepository
+public class CidadeRepository : ICidadeRepository
 {
-    public CidadeRepository(AppDbContext context) : base(context)
+    private readonly AppDbContext _context;
+
+    public CidadeRepository(AppDbContext context)
     {
+        _context = context;
     }
 
-    public Task<Cidade?> GetCidadeByNome(string nome)
+    public async Task Add(Cidade cidade)
     {
-        return _context.Cidades
-            .FirstOrDefaultAsync(c => c.Name == nome);
+        _context.Cidades.Add(cidade);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task Update(Cidade cidade)
+    {
+        _context.Cidades.Update(cidade);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task Delete(Cidade cidade)
+    {
+        _context.Cidades.Remove(cidade);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task<Cidade> GetEntityById(long id)
+    {
+        return await _context.Cidades.FindAsync(id);
+    }
+
+    public async Task<List<Cidade>> List()
+    {
+        return await _context.Cidades.ToListAsync();
+    }
+
+    public async Task<Cidade> GetByName(string name)
+    {
+        return await _context.Cidades.FirstOrDefaultAsync(c => c.Name == name);
+    }
+
+    public async Task<Cidade> GetCidadeByUf(string uf)
+    {
+        return await _context.Cidades.FirstOrDefaultAsync(c => c.UF == uf);
     }
 }

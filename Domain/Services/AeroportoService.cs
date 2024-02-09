@@ -9,30 +9,18 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Domain.Services;
-
 public class AeroportoService : IAeroportoService
 {
     private readonly IAeroportoRepository _aeroportoRepository;
+
     public AeroportoService(IAeroportoRepository aeroportoRepository)
     {
         _aeroportoRepository = aeroportoRepository;
     }
 
-    public async Task AtualizarAeroporto(Aeroporto aeroporto)
+    public async Task<List<Aeroporto>> ListarAeroportoPorNome(string nome)
     {
-        await _aeroportoRepository.Update(aeroporto);
-
-    }
-
-    public async Task CriarAeroporto(Aeroporto aeroporto)
-    {
-        var existingAeroporto = _aeroportoRepository.GetAeroportoByCodigoIATA(aeroporto.CodigoIATA);
-        if (existingAeroporto != null)
-        {
-            throw new InvalidOperationException("Aeroporto com o mesmo CodigoIATA já existe.");
-        }
-
-        await _aeroportoRepository.Add(aeroporto);
+        return await _aeroportoRepository.ListarAeroportoPorNome(nome);
     }
 
     public async Task<Aeroporto> GetAeroportoByCodigoIATA(string codigoIATA)
@@ -40,8 +28,33 @@ public class AeroportoService : IAeroportoService
         return await _aeroportoRepository.GetAeroportoByCodigoIATA(codigoIATA);
     }
 
-    public async Task<List<Aeroporto>> ListarAeroportoPorNome(string nome)
+    public async Task<List<Aeroporto>> GetAeroportosByCidade(string nomeCidade)
     {
-        return await _aeroportoRepository.ListarAeroportoPorNome(nome);
+        return await _aeroportoRepository.GetAeroportosByCidade(nomeCidade);
+    }
+
+    public async Task<Aeroporto> GetById(long id)
+    {
+        return await _aeroportoRepository.GetEntityById(id);
+    }
+
+    public async Task<List<Aeroporto>> List()
+    {
+        return await _aeroportoRepository.List();
+    }
+
+    public async Task Add(Aeroporto aeroporto)
+    {
+        await _aeroportoRepository.Add(aeroporto);
+    }
+
+    public async Task Update(Aeroporto aeroporto)
+    {
+        await _aeroportoRepository.Update(aeroporto);
+    }
+
+    public async Task Delete(Aeroporto aeroporto)
+    {
+        await _aeroportoRepository.Delete(aeroporto);
     }
 }

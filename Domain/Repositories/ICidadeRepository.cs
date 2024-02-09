@@ -9,5 +9,5 @@ namespace Domain.Repositories;
 
 public interface ICidadeRepository : IRepository<Cidade>
 {
-    Task<Cidade> GetCidadeByNome(string nome);
+    Task<Cidade> GetCidadeByUf(string nome);
 }

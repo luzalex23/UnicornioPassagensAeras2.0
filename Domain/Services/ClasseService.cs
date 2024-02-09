@@ -1,4 +1,4 @@
-﻿using Domain.Entities;
+﻿/*using Domain.Entities;
 using Domain.Repositories;
 using Domain.Services.InterfacesServicos;
 using System;
@@ -50,3 +50,4 @@ public class ClasseService : IClasseService
         throw new NotImplementedException();
     }
 }
+*/

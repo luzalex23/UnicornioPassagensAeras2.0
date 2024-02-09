@@ -1,0 +1,26 @@
+﻿@model List<Application.DTOs.CidadeDTO>
+@{
+    ViewData["Title"] = "Cidades";
+}
+
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Unidade Federativa</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cidade in Model)
+            {
+                <tr>
+                    <td>@cidade.Nome</td>
+                    <td>@cidade.UnidadeFederativa</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,4 +1,4 @@
-﻿using Domain.Entities;
+﻿/*using Domain.Entities;
 using Domain.Repositories;
 using Domain.Services.InterfacesServicos;
 using System;
@@ -141,3 +141,4 @@ public class PassagemService : IPassagemService
         throw new NotImplementedException();
     }
 }
+*/

@@ -14,7 +14,7 @@ public class AeroportoConfiguration : IEntityTypeConfiguration<Aeroporto>
     public void Configure(EntityTypeBuilder<Aeroporto> builder)
     {
         builder.HasKey(a => a.Id);
-        builder.Property(a => a.CodigoIATA).IsRequired();
+        builder.Property(a => a.Iata.Name).IsRequired();
         builder.Property(a => a.Name).IsRequired();
         builder.HasOne(a => a.Cidade).WithMany().HasForeignKey(a => a.CidadeID);
         builder.HasOne(a => a.Iata).WithMany().HasForeignKey(a => a.IataID);

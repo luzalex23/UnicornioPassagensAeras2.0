@@ -1,34 +1,30 @@
-﻿@model IEnumerable<Presentation.ViewModel.AeroportoViewModel>
+﻿@model List<Application.DTOs.AeroportoDTO>
 @{
-    ViewData["Title"] = "Listar";
+    ViewData["Title"] = "Aeroportos";
 }
-<h1>Lista de Aeroportos</h1>
+<div class="container">
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Código IATA</th>
-            <th>Nome</th>
-            <th>Cidade</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var aeroporto in Model)
-        {
+    <h2>@ViewData["Title"]</h2>
+    <table class="table">
+        <thead>
             <tr>
-                <td>@aeroporto?.CodigoIATA</td>
-                <td>@aeroporto?.Nome</td>
-                <td>@aeroporto?.NomeCidade</td>
-
-                <td>
-                    <a asp-action="Detalhes" asp-route-id="@aeroporto.Id">Detalhes</a> |
-                    <a asp-action="Editar" asp-route-id="@aeroporto.Id">Editar</a> |
-                    <a asp-action="Excluir" asp-route-id="@aeroporto.Id">Excluir</a>
-                </td>
+                <th>Código IATA</th>
+                <th>Nome</th>
+                <th>Cidade</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var aeroporto in Model)
+            {
+                <tr>
+                    <td>@aeroporto.Nome</td>
+                    <td>@aeroporto.CodigoIATA</td>
+                    <td>@aeroporto.CidadeID</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-action="Criar">Criar Novo Aeroporto</a>
 
-<a asp-action="Criar">Criar Novo Aeroporto</a>
+</div>
+

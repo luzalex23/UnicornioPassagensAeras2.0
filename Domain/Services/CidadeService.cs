@@ -13,35 +13,32 @@ public class CidadeService : ICidadeService
         _cidadeRepository = cidadeRepository;
     }
 
-    public async Task AtualizarCidade(Cidade cidade)
+    public async Task<Cidade> GetById(long id)
+    {
+        return await _cidadeRepository.GetEntityById(id);
+    }
+
+    public async Task<List<Cidade>> List()
+    {
+        return await _cidadeRepository.List();
+    }
+    public async Task Delete(Cidade cidade)
+    {
+        await _cidadeRepository.Delete(cidade);
+    }
+    public async Task Update(Cidade cidade)
     {
         await _cidadeRepository.Update(cidade);
     }
 
-    public async Task CriarCidade(Cidade cidade)
+    public async Task GetCidadeByUf(string uf)
     {
-        var existingCidade =  _cidadeRepository.GetCidadeByNome(cidade.Name);
-        if(existingCidade != null)
-        {
-            throw new InvalidOperationException("Cidade com o mesmo Nome já existe.");
-
-        }
-         await _cidadeRepository.Add(cidade);
-
+       await _cidadeRepository.GetCidadeByUf(uf);
     }
 
-    public Task<Cidade> GetById(int id)
+    public async Task Add(Cidade cidade)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task<Cidade> GetByIdAsync(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task<List<Cidade>> List()
-    {
-        throw new NotImplementedException();
+        await _cidadeRepository.Add(cidade);
     }
 }
+

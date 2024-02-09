@@ -1,4 +1,4 @@
-﻿using Domain.Entities;
+﻿/*using Domain.Entities;
 using Domain.Repositories;
 using Domain.Services.InterfacesServicos;
 using System;
@@ -67,3 +67,4 @@ public class VooService : IVooService
         return classeNoVoo != null && classeNoVoo.QuantidadeAssentos >= quantidadePassagens;
     }
 }
+*/

@@ -8,8 +8,10 @@ namespace Domain.Services.InterfacesServicos;
 
 public interface IServiceGeneric<T> where T : class
 {
-    Task<T>GetById(int id);
-    Task<T> GetByIdAsync(int id);
+    Task<T>GetById(long id);
     Task<List<T>> List();
+    Task Add(T objeto);
+    Task Update(T objeto);
+    Task Delete(T objeto);
 
 }

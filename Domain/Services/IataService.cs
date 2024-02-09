@@ -11,23 +11,54 @@ namespace Domain.Services;
 
 public class IataService : IIataService
 {
-    private readonly IRepository<Iata>_repository;
-    public IataService(IRepository<Iata> repository)
+    private readonly IIataRepository _iataRepository;
+
+    public IataService(IIataRepository iataRepository)
     {
-        _repository = repository;
+        _iataRepository = iataRepository;
     }
-    public async Task AtualizarIata(Iata iata)
+    public async Task<List<Iata>> ListarIATAs()
     {
-        await _repository.Update(iata);
+        return await _iataRepository.List();
     }
 
-    public async Task CriarIata(Iata iata)
+    public async Task<Iata> GetIATAById(long id)
     {
-        await _repository.Add(iata);
+        return await _iataRepository.GetEntityById(id);
     }
 
     public async Task<Iata> GetByNome(string nome)
     {
-        return await _repository.GetByName(nome);
+        return  await _iataRepository.GetByName(nome);
+    }
+
+    public async Task<Iata> GetById(long IataId)
+    {
+        return await _iataRepository.GetEntityById(IataId);
+    }
+
+    public async Task<List<Iata>> List()
+    {
+        return await _iataRepository.List();
+    }
+
+    public async Task Add(Iata iata)
+    {
+        var existingIata = _iataRepository.GetByName(iata.Name);
+        if (existingIata != null)
+        {
+            throw new InvalidOperationException("CodigoIATA já existente e relacionado a um aeroporto.");
+        }
+        await _iataRepository.Add(iata);
+    }
+
+    public async Task Update(Iata iata)
+    {
+        await _iataRepository.Update(iata);
+    }
+
+    public async Task Delete(Iata iata)
+    {
+        await _iataRepository.Delete(iata);
     }
 }

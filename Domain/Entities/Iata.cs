@@ -8,4 +8,6 @@ namespace Domain.Entities;
 
 public class Iata : BaseDomainEntity
 {
+    public Aeroporto Aeroporto { get; set; } = new Aeroporto();
+
 }
